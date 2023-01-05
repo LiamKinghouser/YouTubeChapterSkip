@@ -8,7 +8,7 @@ function skipToNextChapter() {
     let searchString = 'watch?v='
     let searchStringIndex = videoURL.indexOf(searchString)
     let videoID = ''
-    for (let i = searchStringIndex + searchString.length; i < 50; i++) {
+    for (let i = searchStringIndex; i < searchStringIndex + 50; i++) {
         let char = videoURL.charAt(i)
         if (char !== '&') videoID.concat(char)
         else break
@@ -18,20 +18,27 @@ function skipToNextChapter() {
     let elements = document.getElementsByClassName("yt-simple-endpoint style-scope yt-formatted-string")
     console.log("Elements size: " + elements.length)
     let chapters = []
+    let hrefs = []
     for (let i = 0; i < elements.length; i++) {
         let element = elements[i]
-        if (element.getAttribute("href") != null && element.getAttribute("href").toString().includes(videoID) && (element.innerText.includes(':') && /^[0-9]*$/.test(element.innerText.replaceAll(':', ''))) && !chapters.includes(element)) chapters.push(element)
+        if (element.getAttribute("href") != null && element.getAttribute("href").toString().includes(videoID) && (element.innerText.includes(':') && /^[0-9]*$/.test(element.innerText.replaceAll(':', ''))) && !hrefs.includes(element.getAttribute("href"))) {
+            chapters.push(element)
+            hrefs.push(element.getAttribute("href"))
+        }
     }
     console.log("Chapters size: " + chapters.length)
 
     let currentTime = document.getElementsByClassName("ytp-time-current")[0].innerText
-    let currentTimeSeconds
+    console.log(currentTime)
 
     let parts = currentTime.split(':')
     let colons = parts.length - 1
+    if (colons === 1) currentTime = '00:' + currentTime
 
-    if (colons === 2) currentTimeSeconds = ((parts[0] * 60) * 60) + (parts[1] * 60) + parts[2]
-    else currentTimeSeconds = (parts[0] * 60) + parts[1]
+    let currentTimeSeconds = new Date('January 1, 1970 ' + currentTime).getSeconds()
+
+    // if (colons === 2) currentTimeSeconds = ((parts[0] * 60) * 60) + (parts[1] * 60) + parts[2]
+    // else currentTimeSeconds = (parts[0] * 60) + parts[1]
 
     let nextChapterSeconds
 
