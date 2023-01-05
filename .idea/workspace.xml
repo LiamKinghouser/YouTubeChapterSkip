@@ -4,22 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8dd18c56-db68-4c7f-9066-cba7e99b870f" name="Changes" comment="Commit">
-      <change afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/background.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/button.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/get_started128.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/get_started16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/get_started32.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/get_started48.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/options.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/options.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/popup.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/popup.js" afterDir="false" />
-    </list>
+    <list default="true" id="8dd18c56-db68-4c7f-9066-cba7e99b870f" name="Changes" comment="Commit" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -92,6 +77,7 @@
       <workItem from="1672721518711" duration="12000" />
       <workItem from="1672864618222" duration="10323000" />
       <workItem from="1672891524582" duration="67000" />
+      <workItem from="1672891606694" duration="880000" />
     </task>
     <task id="LOCAL-00001" summary="Commit">
       <created>1672891160251</created>
