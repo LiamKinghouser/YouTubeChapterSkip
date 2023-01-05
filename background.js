@@ -3,7 +3,7 @@ chrome.commands.onCommand.addListener((command) => {
 })
 
 function skipToNextChapter() {
-    let videoURL = document.URL // get video id from document url
+    let videoURL = document.URL // get video id from doc url
     console.log(videoURL)
     let searchString = 'watch?v='
     let searchStringIndex = videoURL.indexOf(searchString)
