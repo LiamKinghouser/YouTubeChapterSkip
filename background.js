@@ -3,20 +3,12 @@ chrome.commands.onCommand.addListener((command) => {
 })
 
 function skipToNextChapter() {
-    let videoURL = document.URL // get video id from doc url
-    console.log(videoURL)
+    let videoURL = document.URL
     let searchString = 'watch?v='
     let searchStringIndex = videoURL.indexOf(searchString)
-    let videoID = ''
-    for (let i = searchStringIndex; i < searchStringIndex + 50; i++) {
-        let char = videoURL.charAt(i)
-        if (char !== '&') videoID.concat(char)
-        else break
-    }
-    console.log(videoID)
+    let videoID = videoURL.slice(searchStringIndex + searchString.length, videoURL.indexOf('&t'))
 
     let elements = document.getElementsByClassName("yt-simple-endpoint style-scope yt-formatted-string")
-    console.log("Elements size: " + elements.length)
     let chapters = []
     let hrefs = []
     for (let i = 0; i < elements.length; i++) {
@@ -26,54 +18,37 @@ function skipToNextChapter() {
             hrefs.push(element.getAttribute("href"))
         }
     }
-    console.log("Chapters size: " + chapters.length)
-
-    let currentTime = document.getElementsByClassName("ytp-time-current")[0].innerText
-    console.log(currentTime)
-
-    let parts = currentTime.split(':')
-    let colons = parts.length - 1
-    if (colons === 1) currentTime = '00:' + currentTime
-
-    let currentTimeSeconds = new Date('January 1, 1970 ' + currentTime).getSeconds()
-
-    // if (colons === 2) currentTimeSeconds = ((parts[0] * 60) * 60) + (parts[1] * 60) + parts[2]
-    // else currentTimeSeconds = (parts[0] * 60) + parts[1]
+    let currentTimeSeconds = parseInt(document.getElementById('movie_player').getCurrentTime().toString().split('.')[0].replaceAll('.', ''))
 
     let nextChapterSeconds
+
+    console.log(currentTimeSeconds)
 
     for (let i = 0; i < chapters.length; i++) {
         let split = chapters[i].getAttribute('href').split('&t=')
         let chapterSeconds =  parseInt(split[split.length - 1].replaceAll(/\D/g,''))
-
-        console.log(chapterSeconds + " " + currentTimeSeconds)
 
         if (chapterSeconds > currentTimeSeconds) {
             nextChapterSeconds = chapterSeconds
             break
         }
     }
-    console.log('Next chapter index: ' + nextChapterSeconds)
-    document.dispatchEvent(new CustomEvent(document.getElementById('movie_player').seekTo(parseInt(nextChapterSeconds), true)));
+    if (!isNaN(nextChapterSeconds)) document.dispatchEvent(new CustomEvent(document.getElementById('movie_player').seekTo(parseInt(nextChapterSeconds), true)));
 }
 
 function triggered() {
     chrome.tabs.query({windowId: chrome.windows.WINDOW_ID_CURRENT}, (tabs) => {
-        const youtubeTabs = []
-
+        let youtubeTabs = []
         for (let i = 0; i < tabs.length; i++) {
-            if (tabs[i].audible && tabs[i].url.includes("youtube.com/watch")) {
-                youtubeTabs.push(tabs[i])
-            }
+            if (tabs[i].audible && tabs[i].url.includes("youtube.com/watch")) youtubeTabs.push(tabs[i])
         }
-
-        youtubeTabs.forEach((tab) =>  {
+        if (youtubeTabs.length === 1) {
             chrome.scripting.executeScript(
                 {
-                    target: {tabId: tab.id},
+                    target: {tabId: youtubeTabs[0].id},
                     func: skipToNextChapter,
                     world: "MAIN"
                 },() => {})
-        })
+        }
     })
 }
