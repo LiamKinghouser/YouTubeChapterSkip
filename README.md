@@ -6,4 +6,4 @@ Only executes if there is 1 YouTube video tab open.
 
 Shortcut can be set to browser or global level. 
 
-Shortcut can be edited on the chrome shortcuts page: chrome://extensions/shortcuts
+Shortcut can be edited on the chrome shortcuts page: https://chrome://extensions/shortcuts
