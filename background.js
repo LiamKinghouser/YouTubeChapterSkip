@@ -40,7 +40,7 @@ function triggered() {
     chrome.tabs.query({windowId: chrome.windows.WINDOW_ID_CURRENT}, (tabs) => {
         let youtubeTabs = []
         for (let i = 0; i < tabs.length; i++) {
-            if (tabs[i].audible && tabs[i].url.includes("youtube.com/watch")) youtubeTabs.push(tabs[i])
+            if (tabs[i].url.includes("youtube.com/watch")) youtubeTabs.push(tabs[i])
         }
         if (youtubeTabs.length === 1) {
             chrome.scripting.executeScript(
