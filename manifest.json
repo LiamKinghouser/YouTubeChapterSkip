@@ -6,9 +6,10 @@
   "background": {
     "service_worker": "background.js"
   },
-  "permissions": ["notifications", "tabs", "scripting"],
+  "permissions": ["tabs", "scripting"],
   "host_permissions": [
-    "https://www.youtube.com/watch*"
+    "https://www.youtube.com/*",
+    "https://www.youtu.be/*"
   ],
   "action": {
     "default_icon": {
