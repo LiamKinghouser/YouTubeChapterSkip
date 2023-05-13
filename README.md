@@ -12,8 +12,8 @@ Install:
 
 Chrome (or any Chromium-Based Browser):
 
-Download the code as a ZIP file (https://github.com/LiamKinghouser/YouTubeChapterSkip/archive/refs/heads/main.zip), and extract the folder
-Go to chrome://extensions
-Make sure "Developer mode" is enabled
-Click "Load unpacked"
-Select the downloaded folder
+- Download the code as a ZIP file (https://github.com/LiamKinghouser/YouTubeChapterSkip/archive/refs/heads/main.zip), and extract the folder
+- Go to chrome://extensions
+- Make sure "Developer mode" is enabled
+- Click "Load unpacked"
+- Select the downloaded folder
