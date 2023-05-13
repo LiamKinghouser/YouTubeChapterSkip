@@ -8,8 +8,7 @@
   },
   "permissions": ["tabs", "scripting"],
   "host_permissions": [
-    "https://www.youtube.com/*",
-    "https://www.youtu.be/*"
+    "https://www.youtube.com/*"
   ],
   "action": {
     "default_icon": {

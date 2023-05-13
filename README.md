@@ -1,4 +1,6 @@
 # YouTubeChapterSkip
+
+(In Progress)
  
 Chrome Extension that adds browser keyboard shortcut to skip to next chapter of YouTube video. 
 
